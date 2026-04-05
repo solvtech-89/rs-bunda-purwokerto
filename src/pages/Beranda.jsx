@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Row, Col, Container, Card } from "react-bootstrap";
-import { DOKTER, ABOUT } from "../router";
+ import { DOKTER, ABOUT, LAYANAN } from "../router";
 import { Link } from "react-router-dom";
 import Layanan1 from "../assets/images/layanan1.png";
 import Arrow from "../assets/images/arrow.png";
@@ -49,7 +49,7 @@ const Beranda = () => {
               <p>USG 4 Dimensi HD Live Studio</p>
               <p>Penanganan Kehamilan Resiko Tinggi</p>
               <p className="pb-5">
-                <a href="/layanan">Baca Selengkapnya</a>
+                <Link to={LAYANAN}>Baca Selengkapnya</Link>
               </p>
             </Col>
             <Col>
