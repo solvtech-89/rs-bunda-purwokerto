@@ -1,14 +1,11 @@
 import { Container, Card, Row, Col } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ADMIN_DASHBOARD } from "../../router";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
-import axios from "axios";
 
 const KartuAntrian = () => {
   const navigate = useNavigate();
-  const [pasien, setPasien] = useState([]);
-  const { id } = useParams();
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
