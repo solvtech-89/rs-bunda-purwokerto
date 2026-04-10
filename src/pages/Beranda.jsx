@@ -1,116 +1,117 @@
-/* eslint-disable jsx-a11y/alt-text */
 import { Row, Col, Container, Card } from "react-bootstrap";
- import { DOKTER, ABOUT, LAYANAN } from "../router";
+import { DOKTER, ABOUT, LAYANAN, DAFTAR } from "../router";
 import { Link } from "react-router-dom";
 import Layanan1 from "../assets/images/layanan1.png";
-import Arrow from "../assets/images/arrow.png";
 import Dok from "../assets/images/dok1.png";
 import Layout from "../components/Layout";
 
 const Beranda = () => {
+  const unggulanLayanan = [
+    "USG Obstetri Ginekologi",
+    "USG Skrining Kelainan Kongenital Janin dan Detail Jantung",
+    "USG 4 Dimensi HD Live Studio",
+    "Penanganan Kehamilan Risiko Tinggi",
+  ];
+
+  const dokterPilihan = [
+    {
+      nama: "dr. Anton Prihandana, Sp.OG",
+      spesialis: "Spesialis Obstetri & Ginekologi",
+    },
+    {
+      nama: "dr. Tiara Nurlita Sari, Sp.A",
+      spesialis: "Spesialis Anak",
+    },
+  ];
+
   return (
     <Layout>
-      <div className="beranda">
-        <h1 className="ms-5 judul">
-          Selamat Datang Di Website Resmi <br />
-          Rumah Sakit Bunda Purwokerto
-        </h1>
-      </div>
-      <div className="beranda-content">
-        <Container>
-          <h2 className="pt-5">Sejarah Rumah Sakit Bunda</h2>
-          <p>
-            Rumah Sakit Bunda Purwokerto merupakan Rumah sakit swasta di bawah
-            naungan Yayasan Bunda Purwokerto. Di bangun sejak 09 Agustus 1989
-            dan beroperasi sebagai Rumah Bersalin pada 14 juni 1990 yang
-            diresmikan oleh Bapak Kepala Kandep Kesehatan Banyumas (Bapak dr.
-            Koentoro)
+      <section className="beranda">
+        <Container className="hero-wrapper">
+          <p className="hero-badge">Rumah Sakit Umum Bunda Purwokerto</p>
+          <h1 className="judul">
+            Pelayanan Kesehatan Terintegrasi Untuk Keluarga Anda
+          </h1>
+          <p className="hero-subtitle">
+            Fasilitas modern, dokter berpengalaman, dan proses pendaftaran
+            online yang cepat untuk pengalaman pasien yang lebih nyaman.
           </p>
-          <p>
-            <Link to={ABOUT}>
-              Baca Selengkapnya
-              <img
-                src={Arrow}
-                alt=""
-                style={{ width: "10px", height: "10px" }}
-              />
+          <div className="hero-actions">
+            <Link to={DAFTAR} className="btn-primary-soft">
+              Daftar Sekarang
             </Link>
-          </p>
+            <Link to={DOKTER} className="btn-outline-soft btn-light-outline">
+              Lihat Jadwal Dokter
+            </Link>
+          </div>
         </Container>
-      </div>
-      <div className="beranda-layanan container my-5 h-50">
-        <h2 className="text-center p-5">Layanan</h2>
+      </section>
+
+      <section className="beranda-content">
         <Container>
-          <Row className="container">
-            <Col>
-              <h3>Layanan Unggulan Kandungan</h3>
-              <p>USG Obsetri Ginekologi</p>
-              <p>USG Skrining Kelainan Kongenital Janin dan Detail Jantung</p>
-              <p>USG 4 Dimensi HD Live Studio</p>
-              <p>Penanganan Kehamilan Resiko Tinggi</p>
-              <p className="pb-5">
-                <Link to={LAYANAN}>Baca Selengkapnya</Link>
-              </p>
+          <h2 className="section-title">Sejarah Rumah Sakit Bunda</h2>
+          <p>
+            Rumah Sakit Bunda Purwokerto merupakan rumah sakit swasta di bawah
+            naungan Yayasan Bunda Purwokerto. Berdiri sejak 09 Agustus 1989 dan
+            beroperasi sebagai rumah bersalin pada 14 Juni 1990.
+          </p>
+          <p>
+            Seiring perkembangan layanan, kami terus bertransformasi menjadi
+            rumah sakit keluarga yang mengutamakan keselamatan, empati, dan
+            kualitas layanan medis berbasis standar profesional.
+          </p>
+          <Link to={ABOUT} className="cta-link">
+            Pelajari profil rumah sakit
+          </Link>
+        </Container>
+      </section>
+
+      <section className="beranda-layanan">
+        <Container>
+          <Row className="align-items-center g-4">
+            <Col lg={6}>
+              <h2 className="section-title">Layanan Unggulan Kandungan</h2>
+              <ul className="list modern-list">
+                {unggulanLayanan.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <Link to={LAYANAN} className="cta-link">
+                Jelajahi semua layanan
+              </Link>
             </Col>
-            <Col>
-              <img src={Layanan1} width="400px" height="220px" />
+            <Col lg={6}>
+              <img
+                src={Layanan1}
+                className="pic-layanan"
+                alt="Layanan kandungan unggulan"
+              />
             </Col>
           </Row>
         </Container>
-      </div>
-      <div className="beranda-jadwal pb-5">
+      </section>
+
+      <section className="beranda-jadwal">
         <Container>
-          <h2 className="pt-5 text-center">Jadwal Dokter</h2>
-          <Row className="justify-content-center mt-5">
-            <Card style={{ width: "17rem" }} className="isi-kartu me-5">
-              <Card.Img variant="top" src={Dok} />
-              <Card.Body>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-
-                <Link to={DOKTER}>
-                  Lihat Jadwal Praktik
-                  <img
-                    src={Arrow}
-                    alt=""
-                    style={{ width: "10px", height: "10px" }}
-                  />
-                </Link>
-              </Card.Body>
-            </Card>
-
-            <Card style={{ width: "18rem" }} className="isi-kartu ms-5">
-              <Card.Img variant="top" src={Dok} />
-              <Card.Body>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <div className="">
-                  <Link to={DOKTER}>
-                    Lihat Jadwal Praktik
-                    <img
-                      src={Arrow}
-                      alt=""
-                      style={{ width: "10px", height: "10px" }}
-                    />
-                  </Link>
-                </div>
-              </Card.Body>
-            </Card>
-            <Link to={DOKTER} className="text-center mt-3">
-              Selengkapnya
-              <img
-                src={Arrow}
-                alt=""
-                style={{ width: "10px", height: "10px" }}
-              />
-            </Link>
+          <h2 className="section-title text-center">Dokter Pilihan Hari Ini</h2>
+          <Row className="justify-content-center mt-4 g-4">
+            {dokterPilihan.map((dokter) => (
+              <Col lg={4} md={6} key={dokter.nama}>
+                <Card className="isi-kartu w-100 h-100">
+                  <Card.Img variant="top" src={Dok} alt={dokter.nama} />
+                  <Card.Body>
+                    <h3>{dokter.nama}</h3>
+                    <p>{dokter.spesialis}</p>
+                    <Link to={DOKTER} className="cta-link">
+                      Lihat jadwal praktik
+                    </Link>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
           </Row>
         </Container>
-      </div>
+      </section>
     </Layout>
   );
 };

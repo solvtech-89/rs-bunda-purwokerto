@@ -64,9 +64,6 @@ function App() {
         <Route path={KARIR} element={<Karir />} />
         <Route path={ARTIKEL} element={<Artikel />} />
         <Route path={DETAIL_ARTIKEL} element={<DetailArtikel />} />
-        <Route path={KARIR} element={<Karir />} />
-        <Route path={ARTIKEL} element={<Artikel />} />
-        <Route path={DETAIL_ARTIKEL} element={<DetailArtikel />} />
         <Route path={ADMIN_DASHBOARD} element={<AdminHome />} />
         <Route path={LOGIN} element={<Login />} />
         <Route path={DATA_DOKTER} element={<DataDokter />} />
@@ -81,7 +78,6 @@ function App() {
         <Route path={DAFTAR_PASIEN_BARU} element={<DaftarPasienBaru />} />
         <Route path={DAFTAR_BERHASIL} element={<DaftarBerhasil />} />
         <Route path={KARTU_ANTRIAN} element={<KartuAntrian />} />
-        <Route path={DAFTAR_PASIEN_LAMA} element={<DaftarPasienLama />} />
         <Route path={DAFTAR_PASIEN_LAMA} element={<DaftarPasienLama />} />
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>

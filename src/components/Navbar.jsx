@@ -1,6 +1,5 @@
-import { Container, Nav, Navbar, Row, Col, Stack } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import Logo from "../assets/images/logo-simarsa.png";
 import Telp from "../assets/images/telp.png";
@@ -22,66 +21,70 @@ import {
 const NavigasiBar = () => {
   const navigate = useNavigate();
 
+  const navItems = [
+    { to: HOME, label: "Beranda" },
+    { to: ABOUT, label: "Tentang Kami" },
+    { to: LAYANAN, label: "Layanan" },
+    { to: DOKTER, label: "Jadwal Dokter" },
+    { to: KARIR, label: "Karir" },
+    { to: ARTIKEL, label: "Artikel" },
+    { to: HUBUNGI, label: "Hubungi Kami" },
+  ];
+
   return (
     <>
-      {/* Header Navbar */}
-      <section className="container navbar-logo">
-        <Row>
-          <Col xs={4}>
-            <img src={Logo} width="250px" alt="" className="p-2" />
-          </Col>
-          <Col xs={8} className="mt-3">
-            <Stack direction="horizontal" gap="3">
-              <img src={Telp} alt="" />
-              GAWAT DARURAT (0281) 635423
-              <img src={Jam} alt="" />
-              JAM KERJA 24 JAM Senin-Sabtu
-              <img src={Lokasi} alt="" />
-              LOKASI 0123 Some Place
-            </Stack>
-          </Col>
-        </Row>
+      <section className="navbar-topbar">
+        <Container className="topbar-inner">
+          <div className="topbar-item">
+            <img src={Telp} alt="Ikon telepon" />
+            <span>Darurat 24 Jam: (0281) 635423</span>
+          </div>
+          <div className="topbar-item">
+            <img src={Jam} alt="Ikon jam operasional" />
+            <span>Jam Layanan: 24 Jam</span>
+          </div>
+          <div className="topbar-item">
+            <img src={Lokasi} alt="Ikon lokasi rumah sakit" />
+            <span>Purwokerto, Banyumas</span>
+          </div>
+        </Container>
       </section>
-      {/* Navbar */}
-      <Navbar className="navbar-main" variant="dark" expand="lg">
+
+      <Navbar className="navbar-main" expand="lg" sticky="top">
         <Container>
-          <NavLink to="/" className="navbar-brand">
-            SIMARSA
+          <NavLink to={HOME} className="navbar-brand hospital-brand">
+            <img src={Logo} alt="Rumah Sakit Bunda Purwokerto" />
           </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavLink className="nav-link" to={HOME}>
-                Halaman Utama
-              </NavLink>
-              <NavLink className="nav-link" to={ABOUT}>
-                Tentang Kami
-              </NavLink>
-              <NavLink className="nav-link" to={LAYANAN}>
-                Layanan
-              </NavLink>
-              <NavLink className="nav-link" to={DOKTER}>
-                Jadwal Dokter
-              </NavLink>
-              <NavLink className="nav-link" to={DAFTAR}>
-                Pendaftaran Online
-              </NavLink>
-              <NavLink className="nav-link" to={KARIR}>
-                Karir
-              </NavLink>
-              <NavLink className="nav-link" to={ARTIKEL}>
-                Artikel
-              </NavLink>
-              <NavLink className="nav-link" to={HUBUNGI}>
-                Hubungi Kami
-              </NavLink>
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                  to={item.to}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
             </Nav>
-            <button
-              className="tombol-nav fw-bold"
-              onClick={() => navigate(LOGIN)}
-            >
-              LOGIN
-            </button>
+
+            <div className="navbar-actions">
+              <button
+                className="btn-outline-soft"
+                onClick={() => navigate(LOGIN)}
+              >
+                Login
+              </button>
+              <button
+                className="btn-primary-soft"
+                onClick={() => navigate(DAFTAR)}
+              >
+                Pendaftaran Online
+              </button>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -6,25 +6,28 @@ import Rs from "../assets/images/rs.png";
 const TentangKami = () => {
   return (
     <Layout>
-      <div className="tentangKami mb-5">
-        <Card className="bg-light text-dark tentang">
+      <section className="tentangKami">
+        <Card className="text-dark section-banner">
           <Card.Img src={Rs} alt="Card image" />
           <Card.ImgOverlay className="background-filter">
             <Container>
               <h1>Tentang Kami</h1>
+              <p>
+                Membangun pelayanan kesehatan keluarga yang aman, ramah, dan
+                terpercaya sejak tahun 1989.
+              </p>
             </Container>
           </Card.ImgOverlay>
         </Card>
-        <Container className="my-5 tentang-content h-80 p-2">
-          <Row className="my-5 mx-2">
-            <Col xs="5">
+
+        <Container className="tentang-content">
+          <Row className="align-items-center g-4">
+            <Col lg={5}>
               <img src={logoRs} alt="logo" className="logoRs" />
             </Col>
-            <Col xs="7">
-              <h3>SELAMAT DATANG DI RUMAH SAKIT BUNDA PURWOKERTO</h3>
-              <h2 className="deskripsi">
-                Sejarah Rumah Sakit Bunda Purwokerto
-              </h2>
+            <Col lg={7}>
+              <h3>Selamat Datang di Rumah Sakit Bunda Purwokerto</h3>
+              <h2 className="deskripsi">Sejarah dan Komitmen Pelayanan</h2>
               <p>
                 Rumah Sakit Bunda Purwokerto merupakan Rumah sakit swasta di
                 bawah naungan Yayasan Bunda Purwokerto. Di bangun sejak 09
@@ -42,7 +45,7 @@ const TentangKami = () => {
             </Col>
           </Row>
         </Container>
-      </div>
+      </section>
     </Layout>
   );
 };

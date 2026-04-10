@@ -61,7 +61,7 @@ const HubungiKami = () => {
                     <Form.Control as="textarea" rows={3} />
                   </Form.Group>
                 </Form>
-                <button class="tombol-kirim">SUBMIT</button>
+                <button className="tombol-kirim">SUBMIT</button>
               </Col>
               {/* 2 */}
               <Col xs="3">
