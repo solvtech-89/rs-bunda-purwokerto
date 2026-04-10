@@ -73,6 +73,18 @@ const Layanan = () => {
         </Card>
 
         <Container>
+          <div className="layanan-header">
+            <p className="layanan-kicker">Keunggulan Klinik & Spesialis</p>
+            <h2 className="section-title">
+              Pilihan Layanan Medis Untuk Kebutuhan Anda
+            </h2>
+            <p>
+              Setiap layanan ditangani oleh tim medis profesional dengan alur
+              pemeriksaan yang efisien agar pasien mendapatkan perawatan yang
+              cepat, aman, dan tepat sasaran.
+            </p>
+          </div>
+
           <div className="layanan-content">
             {layananData.map((layanan, index) => (
               <Row
@@ -80,11 +92,14 @@ const Layanan = () => {
                 className="kartu-layanan align-items-center g-4"
               >
                 <Col lg={6} className={index % 2 ? "order-lg-2" : ""}>
-                  <img
-                    src={layanan.image}
-                    className="layanan-image"
-                    alt={layanan.title}
-                  />
+                  <div className="layanan-image-wrap">
+                    <img
+                      src={layanan.image}
+                      className="layanan-image"
+                      alt={layanan.title}
+                    />
+                    <span className="layanan-badge">Layanan Prioritas</span>
+                  </div>
                 </Col>
                 <Col lg={6} className={index % 2 ? "order-lg-1" : ""}>
                   <h3>{layanan.title}</h3>

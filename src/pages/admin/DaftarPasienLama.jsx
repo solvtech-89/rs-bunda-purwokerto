@@ -1,31 +1,22 @@
-import { Row, Col, Form, Container, Nav, Navbar, Card } from "react-bootstrap";
+import { Row, Col, Form, Container, Card } from "react-bootstrap";
 import { ADMIN_DASHBOARD, DAFTAR_BERHASIL } from "../../router";
-import { AiFillHome, AiOutlineRight } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import AdminLayout from "../../components/AdminLayout";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 const DaftarPasienLama = () => {
   const navigate = useNavigate();
   return (
     <AdminLayout>
       <div className="daftarPasienBaru">
-        <Container>
-          <Row>
-            <Navbar bg="light" expand="lg">
-              <Container className="container2 container mb-4">
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="me-auto">
-                    <AiFillHome size="25px" className="ho" />
-                    <Nav.Link href={ADMIN_DASHBOARD}>Home</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link style={{ color: "black" }}>Pendaftaran</Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Container>
-            </Navbar>
-          </Row>
-        </Container>
+        <AdminPageHeader
+          title="Pendaftaran Pasien Lama"
+          breadcrumbs={[
+            { label: "Home", to: ADMIN_DASHBOARD },
+            { label: "Pendaftaran" },
+          ]}
+          description="Form sederhana untuk mempercepat input pasien lama ke alur layanan."
+        />
 
         <Container className="cont">
           <Row>

@@ -6,6 +6,12 @@ import Dok from "../assets/images/dok1.png";
 import Layout from "../components/Layout";
 
 const Beranda = () => {
+  const statistik = [
+    { label: "Pasien Terlayani", value: "50K+" },
+    { label: "Dokter Spesialis", value: "35+" },
+    { label: "Layanan 24 Jam", value: "7 Hari" },
+  ];
+
   const unggulanLayanan = [
     "USG Obstetri Ginekologi",
     "USG Skrining Kelainan Kongenital Janin dan Detail Jantung",
@@ -21,6 +27,21 @@ const Beranda = () => {
     {
       nama: "dr. Tiara Nurlita Sari, Sp.A",
       spesialis: "Spesialis Anak",
+    },
+  ];
+
+  const alurLayanan = [
+    {
+      title: "Daftar Online",
+      desc: "Isi formulir pendaftaran dalam beberapa langkah sederhana.",
+    },
+    {
+      title: "Pilih Dokter",
+      desc: "Pilih jadwal dokter sesuai kebutuhan dan waktu kunjungan Anda.",
+    },
+    {
+      title: "Datang Sesuai Jadwal",
+      desc: "Proses check-in lebih cepat dengan data yang sudah tersimpan.",
     },
   ];
 
@@ -43,6 +64,15 @@ const Beranda = () => {
             <Link to={DOKTER} className="btn-outline-soft btn-light-outline">
               Lihat Jadwal Dokter
             </Link>
+          </div>
+
+          <div className="hero-stats">
+            {statistik.map((item) => (
+              <div key={item.label} className="hero-stat-card">
+                <h3>{item.value}</h3>
+                <p>{item.label}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
@@ -110,6 +140,21 @@ const Beranda = () => {
               </Col>
             ))}
           </Row>
+
+          <div className="service-journey mt-5">
+            <h3 className="text-center">Alur Layanan Pasien</h3>
+            <Row className="g-3 mt-2">
+              {alurLayanan.map((item, idx) => (
+                <Col key={item.title} md={4}>
+                  <div className="journey-card">
+                    <span className="journey-step">0{idx + 1}</span>
+                    <h4>{item.title}</h4>
+                    <p>{item.desc}</p>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </div>
         </Container>
       </section>
     </Layout>

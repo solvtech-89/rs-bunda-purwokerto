@@ -1,33 +1,22 @@
-import { Container, Card, Row, Col, Navbar, Nav } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import AdminLayout from "../../components/AdminLayout";
 import { ADMIN_DASHBOARD, DATA_POLI } from "../../router";
-import { AiFillHome, AiOutlineRight } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 const DataPoliklinik = () => {
   const navigate = useNavigate();
   return (
     <AdminLayout>
       <div className="DataPoliklinik">
-        <Container className="container2 container mb-4">
-          <Row>
-            <Navbar bg="light" expand="lg">
-              <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="me-auto">
-                    <AiFillHome size="25px" className="ho" />
-                    <Nav.Link href={ADMIN_DASHBOARD}>Home</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link style={{ color: "black" }}>
-                      Data Poliklinik
-                    </Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Container>
-            </Navbar>
-          </Row>
-        </Container>
+        <AdminPageHeader
+          title="Data Poliklinik"
+          breadcrumbs={[
+            { label: "Home", to: ADMIN_DASHBOARD },
+            { label: "Data Poliklinik" },
+          ]}
+          description="Ringkasan poli aktif dan akses cepat menuju data tiap poliklinik."
+        />
 
         <Container className="cont">
           <Row>

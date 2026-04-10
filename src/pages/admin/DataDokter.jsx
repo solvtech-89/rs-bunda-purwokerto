@@ -4,16 +4,14 @@ import {
   Row,
   Col,
   Button,
-  Nav,
   Form,
   Modal,
-  Navbar,
 } from "react-bootstrap";
 import { ADMIN_DASHBOARD, DETAIL_DOKTER } from "../../router";
-import { AiFillHome, AiOutlineRight } from "react-icons/ai";
 import AdminLayout from "../../components/AdminLayout";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 const DataDokter = () => {
   const [show, setShow] = useState(false);
@@ -25,23 +23,21 @@ const DataDokter = () => {
   return (
     <AdminLayout>
       <div className="dataDokter">
-        <Container className="container2 container mb-4">
-          <Row>
-            <Navbar bg="light" expand="lg">
-              <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="me-auto">
-                    <AiFillHome size="25px" className="ho" />
-                    <Nav.Link href={ADMIN_DASHBOARD}>Home</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link style={{ color: "black" }}>Data Dokter</Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Container>
-            </Navbar>
-          </Row>
-        </Container>
+        <AdminPageHeader
+          title="Data Dokter"
+          breadcrumbs={[
+            { label: "Home", to: ADMIN_DASHBOARD },
+            { label: "Data Dokter" },
+          ]}
+          action={
+            <Button
+              className="btnDataDokter btn2 btn btn-block"
+              onClick={handleShow}
+            >
+              TAMBAH DATA DOKTER
+            </Button>
+          }
+        />
 
         <Container className="cont">
           <Row>
@@ -54,7 +50,7 @@ const DataDokter = () => {
                     </Card.Title>
                   </Col>
 
-                  <Col>
+                  <Col className="d-flex justify-content-end align-items-start">
                     <Button
                       className="btnDataDokter btn2 btn btn-block"
                       onClick={handleShow}

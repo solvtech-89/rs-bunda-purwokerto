@@ -1,47 +1,24 @@
 import AdminLayout from "../../components/AdminLayout";
-import {
-  Container,
-  Card,
-  Row,
-  Navbar,
-  Nav,
-  Col,
-  Form,
-  Button,
-} from "react-bootstrap";
-import { AiFillHome, AiOutlineRight } from "react-icons/ai";
+import { Container, Card, Row, Col, Form, Button } from "react-bootstrap";
 import { ADMIN_DASHBOARD, DATA_POLIKLINIK, DATA_POLI } from "../../router";
 import male from "../../assets/images/male.png";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 const RiwayatPasien = () => {
   return (
     <AdminLayout>
       <div className="dataPasien">
-        <Container className="containerDataPasien container mb-4">
-          <Row>
-            <Navbar bg="light" expand="lg">
-              <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="me-auto">
-                    <AiFillHome size="25px" className="ho" />
-                    <Nav.Link href={ADMIN_DASHBOARD}>Home</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link href={DATA_POLIKLINIK}>Data Poliklinik</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link href={DATA_POLI}>Data Poli</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link href={DATA_POLI}>Data Pasien</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link style={{ color: "black" }}>
-                      Riwayat Rekam Medis
-                    </Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Container>
-            </Navbar>
-          </Row>
-        </Container>
+        <AdminPageHeader
+          title="Riwayat Rekam Medis"
+          breadcrumbs={[
+            { label: "Home", to: ADMIN_DASHBOARD },
+            { label: "Data Poliklinik", to: DATA_POLIKLINIK },
+            { label: "Data Poli", to: DATA_POLI },
+            { label: "Data Pasien", to: DATA_POLI },
+            { label: "Riwayat Rekam Medis" },
+          ]}
+          description="Rekam riwayat kunjungan dan pemeriksaan dalam satu tampilan detail."
+        />
 
         <Container className="cont">
           <Row>

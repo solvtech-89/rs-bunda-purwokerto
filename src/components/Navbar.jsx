@@ -47,6 +47,10 @@ const NavigasiBar = () => {
             <img src={Lokasi} alt="Ikon lokasi rumah sakit" />
             <span>Purwokerto, Banyumas</span>
           </div>
+          <div className="topbar-item topbar-status">
+            <span className="status-dot" aria-hidden="true"></span>
+            <span>Layanan Online Aktif</span>
+          </div>
         </Container>
       </section>
 

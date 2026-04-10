@@ -1,4 +1,12 @@
-import { Card, Container, Row, Col, Form, Pagination } from "react-bootstrap";
+import {
+  Card,
+  Container,
+  Row,
+  Col,
+  Form,
+  Pagination,
+  Badge,
+} from "react-bootstrap";
 import PicArtikel1 from "../assets/images/artikel1.png";
 import PicArtikel2 from "../assets/images/artikel2.png";
 import PicArtikel3 from "../assets/images/artikel3.png";
@@ -15,208 +23,225 @@ import { DETAIL_ARTIKEL } from "../router";
 import { Link } from "react-router-dom";
 
 const Artikel = () => {
+  const articles = [
+    {
+      image: PicArtikel2,
+      title: "Bahaya Stres pada Ibu Hamil",
+      excerpt:
+        "Saat menjalani masa kehamilan, ibu hamil rentan mengalami stres. Kenali dampaknya dan cara mengelolanya dengan baik.",
+      tag: "Kehamilan",
+      time: "5 menit baca",
+    },
+    {
+      image: PicArtikel3,
+      title: "Cara Meningkatkan Imunitas di Masa Pandemi",
+      excerpt:
+        "Imunitas atau daya tahan tubuh perlu dijaga melalui kebiasaan sehat, nutrisi seimbang, dan istirahat yang cukup.",
+      tag: "Gaya Hidup",
+      time: "4 menit baca",
+    },
+    {
+      image: PicArtikel1,
+      title: "Mengenali Gejala yang Sering Diabaikan pada Ibu Hamil",
+      excerpt:
+        "Beberapa tanda pada kehamilan perlu perhatian lebih sejak awal agar risiko komplikasi dapat ditekan.",
+      tag: "Kesehatan Ibu",
+      time: "6 menit baca",
+    },
+    {
+      image: PicArtikel4,
+      title: "Bahaya Nyeri yang Terlihat Sepele",
+      excerpt:
+        "Nyeri pada area tertentu bisa jadi sinyal tubuh yang perlu evaluasi medis, bukan sekadar keluhan biasa.",
+      tag: "Saraf",
+      time: "4 menit baca",
+    },
+    {
+      image: PicArtikel5,
+      title: "Karbohidrat Kompleks dan Manfaatnya",
+      excerpt:
+        "Karbohidrat kompleks membantu energi lebih stabil dan mendukung pola makan yang lebih sehat.",
+      tag: "Nutrisi",
+      time: "3 menit baca",
+    },
+    {
+      image: PicArtikel6,
+      title: "Penyebab Janin Cegukan dalam Kandungan",
+      excerpt:
+        "Gerakan janin yang terasa berbeda sering menimbulkan kekhawatiran. Ini penjelasan yang lebih tenang dan ilmiah.",
+      tag: "Kehamilan",
+      time: "5 menit baca",
+    },
+    {
+      image: PicArtikel7,
+      title: "Mitos Umum tentang Ibu Hamil yang Perlu Diluruskan",
+      excerpt:
+        "Informasi yang keliru sering membuat ibu hamil cemas. Saatnya memilah mana fakta dan mana mitos.",
+      tag: "Edukasi",
+      time: "4 menit baca",
+    },
+    {
+      image: PicArtikel8,
+      title: "Obat Alami untuk Mengatasi Keracunan Makanan",
+      excerpt:
+        "Beberapa pertolongan awal dapat membantu meredakan gejala, namun tetap perlu mengetahui batas aman untuk ke fasilitas kesehatan.",
+      tag: "Pencernaan",
+      time: "5 menit baca",
+    },
+    {
+      image: PicArtikel9,
+      title: "Makanan Sehat untuk Balita",
+      excerpt:
+        "Menu balita yang tepat membantu tumbuh kembang optimal dan kebiasaan makan yang lebih baik sejak dini.",
+      tag: "Anak",
+      time: "4 menit baca",
+    },
+  ];
+
+  const featuredArticle = articles[0];
+  const categories = [
+    "Semua",
+    "Kehamilan",
+    "Anak",
+    "Nutrisi",
+    "Saraf",
+    "Edukasi",
+  ];
+
   let active = 1;
   let items = [];
   for (let number = 1; number <= 5; number++) {
     items.push(
       <Pagination.Item key={number} active={number === active}>
         {number}
-      </Pagination.Item>
+      </Pagination.Item>,
     );
   }
+
   return (
     <Layout>
-      <div className="artikel">
-        <Card className="text-dark">
+      <section className="artikel">
+        <Card className="text-dark section-banner">
           <Card.Img src={deskDok} alt="Card image" />
           <Card.ImgOverlay className="background-filter">
             <Container>
               <h1>Artikel</h1>
+              <p>
+                Informasi kesehatan yang ringkas, relevan, dan mudah dipahami
+                untuk membantu pasien dan keluarga mengambil keputusan yang
+                lebih baik.
+              </p>
             </Container>
           </Card.ImgOverlay>
         </Card>
-        <div className="p-5 dokter-content">
+
+        <div className="artikel-content-wrap">
           <Container>
-            <Form>
-              <input
-                type="text"
-                placeholder="Cari Artikel"
-                className="search mb-4"
-              />
-            </Form>
-            <Row>
-              {/* CARD 1 */}
-              <Col className="mb-5">
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel2} />
-                  <Card.Body>
-                    <Card.Text>
-                      <h3>Bahaya Stress pada Ibu Hamil</h3>
-                      <p>
-                        Saat menjalani masa masa kehamilan tentunya akan banyak
-                        perubahan yang akan mungkin dialami oleh ibu Hamil...
-                      </p>
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-              {/* END */}
+            <div className="artikel-toolbar">
+              <Form className="artikel-search-form">
+                <input
+                  type="text"
+                  placeholder="Cari artikel kesehatan..."
+                  className="search"
+                />
+              </Form>
 
-              {/* CARD 2 */}
-              <Col className="mb-5">
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel3} />
-                  <Card.Body>
-                    <Card.Text>
-                      <h3>Cara Meningkatkan Imunitas di Masa Pandemi</h3>
-                      <p></p>
-                      Imunitas atau sering disebut daya tahan tubuh, merupakan
-                      sistem kekebalan tubuh yang dirancang untuk mendeteksi
-                      ataupun...
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <div className="artikel-chips">
+                {categories.map((category, index) => (
+                  <Badge
+                    key={category}
+                    bg={index === 0 ? "primary" : "light"}
+                    text={index === 0 ? "light" : "dark"}
+                    className={`artikel-chip ${index === 0 ? "active" : ""}`}
+                  >
+                    {category}
+                  </Badge>
+                ))}
+              </div>
+            </div>
 
-              {/* END */}
-
-              {/* CARD 3 */}
-              <Col className="mb-5">
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel1} />
+            <Row className="g-4 artikel-featured-row align-items-stretch">
+              <Col lg={7}>
+                <Card className="featured-article-card h-100">
+                  <Card.Img
+                    variant="top"
+                    src={featuredArticle.image}
+                    alt={featuredArticle.title}
+                  />
                   <Card.Body>
-                    <Card.Text>
-                      <h3>Bahaya Stress pada Ibu Hamil</h3>
-                      Saat menjalani masa masa kehamilan tentunya akan banyak
-                      perubahan yang akan mungkin dialami oleh ibu Hamil...
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
+                    <div className="article-card-meta">
+                      <Badge bg="info" text="dark">
+                        {featuredArticle.tag}
+                      </Badge>
+                      <span>{featuredArticle.time}</span>
+                    </div>
+                    <h3>{featuredArticle.title}</h3>
+                    <p>{featuredArticle.excerpt}</p>
+                    <Link to={DETAIL_ARTIKEL} className="cta-link">
+                      Baca artikel utama
+                    </Link>
                   </Card.Body>
                 </Card>
               </Col>
 
-              {/* END */}
-
-              {/* CARD 4 */}
-              <Col className="mb-5">
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel4} />
-                  <Card.Body>
-                    <Card.Text className="isi-kartu2">
-                      <h3>Bahaya Nyeri Yang sepele</h3>
-                      Saraf kejepit adalah tekanan pada saraf oleh jaringan di
-                      sekitar tubuh, seperti tulang, tulang yang mulai rapuh
-                      ditelan usia...
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
-                  </Card.Body>
-                </Card>
+              <Col lg={5}>
+                <div className="article-side-panel">
+                  <p className="layanan-kicker">Info Cepat</p>
+                  <h3>Topik Populer Minggu Ini</h3>
+                  <div className="article-side-list">
+                    {articles.slice(1, 4).map((article) => (
+                      <Link
+                        key={article.title}
+                        to={DETAIL_ARTIKEL}
+                        className="article-mini-card"
+                      >
+                        <img src={article.image} alt={article.title} />
+                        <div>
+                          <span>{article.tag}</span>
+                          <strong>{article.title}</strong>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </Col>
-
-              {/* END */}
-
-              {/* CARD 5 */}
-              <Col className="mb-5">
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel5} />
-                  <Card.Body>
-                    <Card.Text className="desk-card">
-                      <h3>Karbohidrat Kompleks</h3>
-                      Karbohidrat komplek merupakan jenis karbohidrat yang
-                      diketahui lebih sehat dan bergizi, sehingga memiliki
-                      banyak manfaat
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-
-              {/* END */}
-
-              {/* CARD 6 */}
-
-              <Col className="mb-5">
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel6} />
-                  <Card.Body>
-                    <Card.Text className="desk-card">
-                      <h3>
-                        Ibu, Kenali Penyebab Janin Cegukan dalam Kandungan
-                      </h3>
-                      Selain menendang, berguling, dan menonjol, ibu hamil juga
-                      dapat merasakan janin saat bergerak...
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-
-              {/* END */}
-
-              {/* CARD 7 */}
-              <Col>
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel7} />
-                  <Card.Body>
-                    <Card.Text className="desk-card">
-                      <h3>Bahaya Stress pada Ibu Hamil</h3>
-                      Saat menjalani masa masa kehamilan tentunya akan banyak
-                      perubahan yang akan mungkin dialami oleh..
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-
-              {/* END */}
-
-              {/* CARD 8 */}
-              <Col>
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel8} />
-                  <Card.Body>
-                    <Card.Text className="desk-card">
-                      <h3>
-                        Ketahui Obat Alami untuk Mengatasi Keracunan Makanan
-                      </h3>
-                      <p>
-                        Mengonsumsi makanan dan minuman sembarangan, tanpa
-                        memerhatikan
-                      </p>
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-
-              {/* END */}
-
-              {/* CARD 9 */}
-              <Col className="mb-5">
-                <Card style={{ width: "300px" }} className="isi-kartu2">
-                  <Card.Img variant="top" src={PicArtikel9} />
-                  <Card.Body>
-                    <Card.Text className="desk-card">
-                      <h3>Makanan Sehat untuk Balita</h3>
-                      <p>
-                        Mulai usia dua tahun, anak balita mulai menjadi pemilih
-                        makanan yang ulung. Terkadang menu yang sama...
-                      </p>
-                    </Card.Text>
-                    <Link to={DETAIL_ARTIKEL}>Selengkapnya</Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-              {/* END */}
             </Row>
-            <div className="d-flex justify-content-center">
-              <Pagination className="text-center">{items}</Pagination>
+
+            <div className="artikel-grid mt-5">
+              {articles.map((article) => (
+                <Card key={article.title} className="article-card-modern">
+                  <div className="article-image-wrap">
+                    <Card.Img
+                      variant="top"
+                      src={article.image}
+                      alt={article.title}
+                    />
+                    <Badge bg="dark" className="article-badge">
+                      {article.tag}
+                    </Badge>
+                  </div>
+                  <Card.Body>
+                    <div className="article-card-meta">
+                      <span>{article.time}</span>
+                    </div>
+                    <h3>{article.title}</h3>
+                    <p>{article.excerpt}</p>
+                    <Link to={DETAIL_ARTIKEL} className="cta-link">
+                      Selengkapnya
+                    </Link>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+
+            <div className="d-flex justify-content-center mt-5">
+              <Pagination className="text-center pagination-modern">
+                {items}
+              </Pagination>
             </div>
           </Container>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };

@@ -2,8 +2,6 @@ import {
   Container,
   Card,
   Row,
-  Navbar,
-  Nav,
   Col,
   Form,
   Tabs,
@@ -18,37 +16,26 @@ import {
   RIWAYAT_PASIEN,
 } from "../../router";
 
-import { AiFillHome, AiOutlineRight } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import AdminLayout from "../../components/AdminLayout";
 import male from "../../assets/images/male.png";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 const DataPasien = () => {
   const navigate = useNavigate();
   return (
     <AdminLayout>
       <div className="dataPasien">
-        <Container className="containerDataPasien container mb-4">
-          <Row>
-            <Navbar bg="light" expand="lg">
-              <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="me-auto">
-                    <AiFillHome size="25px" className="ho" />
-                    <Nav.Link href={ADMIN_DASHBOARD}>Home</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link href={DATA_POLIKLINIK}>Data Poliklinik</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link href={DATA_POLI}>Data Poli</Nav.Link>
-                    <AiOutlineRight className="ho1" />
-                    <Nav.Link style={{ color: "black" }}>Data Pasien</Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Container>
-            </Navbar>
-          </Row>
-        </Container>
+        <AdminPageHeader
+          title="Detail Pasien"
+          breadcrumbs={[
+            { label: "Home", to: ADMIN_DASHBOARD },
+            { label: "Data Poliklinik", to: DATA_POLIKLINIK },
+            { label: "Data Poli", to: DATA_POLI },
+            { label: "Data Pasien" },
+          ]}
+          description="Informasi pasien dan riwayat kunjungan dalam satu tampilan yang lebih fokus."
+        />
 
         <Container className="cont">
           <Row>
